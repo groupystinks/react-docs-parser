@@ -1,3 +1,3 @@
-var reactDocsParser = require('react-docs-parser')
+import {parse} from './react-docs-parser'
 
-module.exports = reactDocsParser;
+export default parse

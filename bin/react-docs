@@ -2,11 +2,18 @@
 
 var program = require('commander')
 var pjson = require('../package.json')
-var reactDocsParser = require('../src');
+var parse = require('../dist')
+
+var docsData
 
 program
     .version(pjson.version)
     .option('-p, --path <path>', 'path of react components')
     .parse(process.argv)
 
-if (program.path) console.log('%s right here', program.path)
+if (program.path) {
+  var docsData = parse(program.path)
+  docsData.then(function (data) {
+    console.log(data)
+  })
+}
